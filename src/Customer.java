@@ -14,9 +14,7 @@ public class Customer {
 
     public Customer(String name, String phone) {
 
-        String randomID = UUID.randomUUID().toString().replace("-", "");
-
-        this.customerId = randomID;
+        this.customerId = UUID.randomUUID().toString().replace("-", "");;
         this.name = name;
         this.phone = phone;
     }
