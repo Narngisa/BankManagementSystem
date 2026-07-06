@@ -52,6 +52,7 @@ public class Customer {
 
         customers.add(user);
         System.out.println("Created user is successfully !!");
+        System.out.println("Your ID: " + user.getCustomerId());
     }
 
     public static void showAllCustomer() {
