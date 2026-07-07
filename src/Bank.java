@@ -63,5 +63,20 @@ public class Bank {
         transaction.printSlip();
     }
 
+    public void withdraw(String accountId, double amount) {
+        Account account = findAccount(accountId);
+        String transactionType = "Withdraw";
+        if (account == null) {
+            System.out.println("Account ID not found !!");
+            return;
+        }
+        boolean success = account.withdraw(amount);
+
+        if (success) {
+            Transaction transaction = new Transaction(accountId, transactionType, amount, account.getBalance());
+            transactions.add(transaction);
+            transaction.printSlip();
+        }
+    }
 
 }
