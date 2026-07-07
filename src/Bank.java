@@ -33,6 +33,13 @@ public class Bank {
         return null;
     }
 
+    public void addCustomer(String name, String phone) {
+        Customer customer = new Customer(name, phone);
+        customers.add(customer);
+        System.out.println("Customer added! ID: " + customer.getCustomerId());
+    }
+
+
     public void createAccount(String customerId, double initialDeposit) {
         Customer customer = findCustomer(customerId);
 
