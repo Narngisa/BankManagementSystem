@@ -70,6 +70,7 @@ public class Bank {
             System.out.println("Account ID not found !!");
             return;
         }
+
         boolean success = account.withdraw(amount);
 
         if (success) {
@@ -79,4 +80,38 @@ public class Bank {
         }
     }
 
+    public void transfer(String fromAccountId, String toAccountId, double amount) {
+        Account fromAccount = findAccount(fromAccountId);
+        Account toAccount = findAccount(toAccountId);
+        String[] transactionType = {"Transfer Out", "Transfer In"};
+
+        if (fromAccount == null) {
+            System.out.println("Form account ID not found !!");
+            return;
+        } else if (toAccount == null) {
+            System.out.println("To account ID not found !!");
+            return;
+        }
+
+        if (fromAccountId.equals(toAccountId)) {
+            System.out.println("Cannot transfer to the same account!");
+            return;
+        }
+
+        boolean success = fromAccount.withdraw(amount);
+
+        if (success) {
+
+            toAccount.deposit(amount);
+
+            Transaction fromTransaction = new Transaction(fromAccountId, transactionType[0], amount, fromAccount.getBalance());
+            Transaction toTransaction = new Transaction(toAccountId, transactionType[1], amount, toAccount.getBalance());
+
+            transactions.add(fromTransaction);
+            transactions.add(toTransaction);
+
+            fromTransaction.printSlip();
+            toTransaction.printSlip();
+        }
+    }
 }
