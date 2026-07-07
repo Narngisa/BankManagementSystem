@@ -114,4 +114,31 @@ public class Bank {
             toTransaction.printSlip();
         }
     }
+
+    public void showStatement(String accountId) {
+        Account account = findAccount(accountId);
+        if (account == null) {
+            System.out.println("Account ID not found !!");
+            return;
+        }
+
+        System.out.println("STATEMENT FOR ACCOUNT: " + accountId);
+        System.out.println("Current Balance: " + account.getBalance());
+        System.out.println("=================================");
+
+        boolean found = false;
+
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction transaction = transactions.get(i);
+            if (transaction.getAccountId().equals(accountId)) {
+                transaction.printSlip();
+                found = true;
+            }
+
+        }
+
+        if (!found) {
+            System.out.println("No transactions found.");
+        }
+    }
 }
