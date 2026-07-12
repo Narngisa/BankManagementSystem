@@ -31,36 +31,43 @@ public class Menu {
 
             switch(choice) {
                 case "1":
+                    clearScreen();
                     addCustomer();
                     pressEnter();
                     clearScreen();
                     break;
                 case "2":
+                    clearScreen();
                     createAccount();
                     pressEnter();
                     clearScreen();
                     break;
                 case "3":
+                    clearScreen();
                     deposit();
                     pressEnter();
                     clearScreen();
                     break;
                 case "4":
+                    clearScreen();
                     withdraw();
                     pressEnter();
                     clearScreen();
                     break;
                 case "5":
+                    clearScreen();
                     transfer();
                     pressEnter();
                     clearScreen();
                     break;
                 case "6":
+                    clearScreen();
                     showStatement();
                     pressEnter();
                     clearScreen();
                     break;
                 case "7":
+                    clearScreen();
                     showAllCustomers();
                     pressEnter();
                     clearScreen();
