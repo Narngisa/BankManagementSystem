@@ -23,8 +23,8 @@ public class Menu {
             System.out.println("4. Withdraw");
             System.out.println("5. Transfer");
             System.out.println("6. Show Statement");
-            System.out.println("7. Show All Customer");
-            System.out.println("8. Show All Accounts");
+            System.out.println("7. Show All Customers");
+            System.out.println("8. Show Account by Customer ID");
             System.out.println("9. Exit");
             System.out.print("Choose: ");
 
@@ -35,49 +35,41 @@ public class Menu {
                     clearScreen();
                     addCustomer();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "2":
                     clearScreen();
                     createAccount();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "3":
                     clearScreen();
                     deposit();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "4":
                     clearScreen();
                     withdraw();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "5":
                     clearScreen();
                     transfer();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "6":
                     clearScreen();
                     showStatement();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "7":
                     clearScreen();
                     showAllCustomers();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "8":
                     clearScreen();
-                    showCustomerAccounts();
+                    showAccountsByCustomer();
                     pressEnter();
-                    clearScreen();
                     break;
                 case "9":
                     System.out.println("Goodbye!");
@@ -85,9 +77,9 @@ public class Menu {
                     bank.closeScanner();
                     return;
                 default:
+                    clearScreen();
                     System.out.println("Invalid choice!");
                     pressEnter();
-                    clearScreen();
             }
         }
     }
@@ -163,9 +155,9 @@ public class Menu {
         scanner.nextLine();
     }
 
-    public void showCustomerAccounts() {
+    public void showAccountsByCustomer() {
         System.out.print("Enter Customer ID: ");
         String customerId = scanner.nextLine();
-        bank.findCustomerAccounts(customerId);
+        bank.findAccountsByCustomer(customerId);
     }
 }
