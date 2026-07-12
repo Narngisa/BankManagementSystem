@@ -24,7 +24,8 @@ public class Menu {
             System.out.println("5. Transfer");
             System.out.println("6. Show Statement");
             System.out.println("7. Show All Customer");
-            System.out.println("8. Exit");
+            System.out.println("8. Show All Accounts");
+            System.out.println("9. Exit");
             System.out.print("Choose: ");
 
             String choice = scanner.nextLine();
@@ -73,6 +74,12 @@ public class Menu {
                     clearScreen();
                     break;
                 case "8":
+                    clearScreen();
+                    showCustomerAccounts();
+                    pressEnter();
+                    clearScreen();
+                    break;
+                case "9":
                     System.out.println("Goodbye!");
                     scanner.close();
                     bank.closeScanner();
@@ -143,7 +150,7 @@ public class Menu {
     }
 
     public void showAllCustomers() {
-        bank.showAllCustomer();
+        bank.showAllCustomers();
     }
 
     public static void clearScreen() {
@@ -154,5 +161,11 @@ public class Menu {
     public void pressEnter() {
         System.out.print("\nPress Enter to continue...");
         scanner.nextLine();
+    }
+
+    public void showCustomerAccounts() {
+        System.out.print("Enter Customer ID: ");
+        String customerId = scanner.nextLine();
+        bank.findCustomerAccounts(customerId);
     }
 }
