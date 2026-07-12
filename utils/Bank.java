@@ -146,7 +146,7 @@ public class Bank {
         transaction.printSlip();
     }
 
-    public void findCustomerAccounts(String customerId) {
+    public void findAccountsByCustomer(String customerId) {
         Customer customer = findCustomer(customerId);
         if (customer == null) {
             System.out.println("Customer not found !!");
@@ -167,7 +167,7 @@ public class Bank {
         }
 
         if (!found) {
-            System.out.println("No account found for this customer.");
+            System.out.println("No accounts found for this customer.");
         }
     }
 
