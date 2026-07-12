@@ -25,7 +25,7 @@ public class Bank {
         System.out.println("Your ID: " + user.getCustomerId());
     }
 
-    public void showAllCustomer() {
+    public void showAllCustomers() {
         if (customers.isEmpty()) {
             System.out.println("Customer not found !!");
             return;
@@ -39,8 +39,7 @@ public class Bank {
             Customer user = customers.get(i);
             System.out.println("ID: " + user.getCustomerId());
             System.out.println("Name: " + user.getName() + " | Phone: " + user.getPhone());
-            System.out.println("=========================");
-            System.out.println("");
+            System.out.println("-------------------------");
         }
     }
 
@@ -127,14 +126,15 @@ public class Bank {
 
     public void createAccount(String customerId, double initialDeposit) {
         Customer customer = findCustomer(customerId);
+        String transactionType = "OPEN";
 
         if (customer == null) {
-            System.out.println("Account not found !!");
+            System.out.println("Customer not found !! !!");
             return;
         }
 
         Account account = new Account(customerId, initialDeposit);
-        Transaction transaction = new Transaction(account.getAccountId(), "OPEN", initialDeposit, account.getBalance());
+        Transaction transaction = new Transaction(account.getAccountId(), transactionType, initialDeposit, account.getBalance());
 
         accounts.add(account);
         transactions.add(transaction);
@@ -146,9 +146,34 @@ public class Bank {
         transaction.printSlip();
     }
 
+    public void findCustomerAccounts(String customerId) {
+        Customer customer = findCustomer(customerId);
+        if (customer == null) {
+            System.out.println("Customer not found !!");
+            return;
+        }
+
+        System.out.println("\n===== Accounts for " + customer.getName() + " =====");
+        boolean found = false;
+
+        for (Account account : accounts) {
+            if (account.getCustomerId().equals(customerId)) {
+                System.out.println("📌 Account ID: " + account.getAccountId());
+                System.out.println("   Balance: " + account.getBalance() + " baht");
+                System.out.println("   Open Date: " + account.getOpenDate());
+                System.out.println("-------------------------");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No account found for this customer.");
+        }
+    }
+
     public void deposit(String accountId, double amount) {
         Account account = findAccount(accountId);
-        String transactionType = "Deposit";
+        String transactionType = "DEPOSIT";
         if (account == null) {
             System.out.println("Account ID not found !!");
             return;
@@ -161,7 +186,7 @@ public class Bank {
 
     public void withdraw(String accountId, double amount) {
         Account account = findAccount(accountId);
-        String transactionType = "Withdraw";
+        String transactionType = "WITHDRAW";
         if (account == null) {
             System.out.println("Account ID not found !!");
             return;
@@ -179,7 +204,7 @@ public class Bank {
     public void transfer(String fromAccountId, String toAccountId, double amount) {
         Account fromAccount = findAccount(fromAccountId);
         Account toAccount = findAccount(toAccountId);
-        String[] transactionType = {"Transfer Out", "Transfer In"};
+        String[] transactionType = {"TRANSFER_OUT", "TRANSFER_IN"};
 
         if (fromAccount == null) {
             System.out.println("Form account ID not found !!");
