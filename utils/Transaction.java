@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.Map;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -45,14 +46,25 @@ public class Transaction {
         return this.transactionDate;
     }
 
+    private static final Map<String, String> TYPE_DISPLAY = Map.of(
+        "OPEN", "ACCOUNT OPEN",
+        "DEPOSIT", "DEPOSIT",
+        "WITHDRAW", "WITHDRAW",
+        "TRANSFER_OUT", "TRANSFER OUT",
+        "TRANSFER_IN", "TRANSFER IN"
+    );
+
     public void printSlip() {
+
+        String displayType = TYPE_DISPLAY.getOrDefault(transactionType, transactionType);
+
         System.out.println("=================================");
         System.out.println("TRANSACTION SLIP");
         System.out.println("=================================");
         System.out.println("Transaction ID   : " + transactionId);
         System.out.println("Date & Time      : " + transactionDate);
         System.out.println("Account          : " + accountId);
-        System.out.println("Type             : " + transactionType);
+        System.out.println("Type             : " + displayType);
         System.out.println("Amount           : " + transactionAmount + " baht");
         System.out.println("Balance          : " + balance + " baht");
         System.out.println("=================================");
