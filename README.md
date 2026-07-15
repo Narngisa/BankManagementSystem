@@ -1,10 +1,10 @@
-# Bank Management System
+# 🏦 Bank Management System
 This project is a simple banking system built as a console application in Java to practice Object-Oriented Programming concepts.
 
-## Language
+## 💻 Language
 Java `OpenJDK 26.0.1`
 
-## Feature
+## 🚩 Feature
 - Add Customer
 - Create Account
 - Deposit
@@ -14,6 +14,6 @@ Java `OpenJDK 26.0.1`
 - Show All Customers
 - Show Account by Customer
 
-## Commands Complie Java
+## 🔎 How to use ?
 1. `javac utils/*.java Main.java`
 2. `java Main`
